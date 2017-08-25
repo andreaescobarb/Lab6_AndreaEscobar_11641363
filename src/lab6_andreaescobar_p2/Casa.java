@@ -9,13 +9,6 @@ package lab6_andreaescobar_p2;
  *
  * @author andre
  */
-public class Lab6_andreaescobar_p2 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Casa extends Lugar{
     
 }

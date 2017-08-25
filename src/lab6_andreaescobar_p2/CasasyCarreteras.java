@@ -558,7 +558,11 @@ public class CasasyCarreteras extends javax.swing.JFrame {
 
     private void jb_guardarcarreteraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarcarreteraMouseClicked
         // TODO add your handling code here:
-
+        int distancia = Integer.parseInt(tf_distancia.getText());
+        int numero = (int) spinner_numerocarretera.getValue();
+        String inicio = cb_iniciocarretera.getSelectedItem().getClass().getName();
+        String fin = cb_final.getSelectedItem().getClass().getName();
+        carretera.add(new Carreteras(distancia, numero, inicio, fin));
     }//GEN-LAST:event_jb_guardarcarreteraMouseClicked
 
     private void jb_guardarcanchaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarcanchaMouseClicked
@@ -566,6 +570,11 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         String categoria = (String) cb_categoriacancha.getSelectedItem();
         String estado = (String) cb_estado.getSelectedItem();
         cancha.add(new Cancha(categoria, estado, nombre_cancha, seguridad_cancha, direccion_cancha, 0, 0));
+        
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_iniciocarretera.getModel();
+        modelo.addElement(nombre_cancha);
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cb_final.getModel();
+        model.addElement(nombre_cancha);
     }//GEN-LAST:event_jb_guardarcanchaMouseClicked
 
     private void jb_guardarcanchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarcanchaActionPerformed
@@ -597,6 +606,10 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         spinner_seguridad.setValue(10);
         tf_direccion.setText("");
         casa.add(new Casa(nombre_casa, seguridad_casa, direccion_casa, 0, 0));
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_iniciocarretera.getModel();
+        modelo.addElement(nombre_casa);
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cb_final.getModel();
+        model.addElement(nombre_casa);
     }//GEN-LAST:event_jb_casaMouseClicked
 
     private void cb_iniciocarreteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_iniciocarreteraActionPerformed
@@ -740,6 +753,7 @@ public class CasasyCarreteras extends javax.swing.JFrame {
     ArrayList<Lugar> lugar = new ArrayList();
     ArrayList<Cancha> cancha = new ArrayList();
     ArrayList<Restaurante> restaurante = new ArrayList();
+    ArrayList<Carreteras> carretera = new ArrayList();
     ArrayList<Casa> casa = new ArrayList();
     String nombre_restaurante;
     String nombre_cancha;

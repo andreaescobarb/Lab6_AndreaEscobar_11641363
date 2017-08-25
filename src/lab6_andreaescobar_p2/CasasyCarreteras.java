@@ -61,6 +61,8 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        cb_listarlugares = new javax.swing.JComboBox<>();
+        cb_listarcarreteras = new javax.swing.JComboBox<>();
         jd_restaurante = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         cb_categoria = new javax.swing.JComboBox<>();
@@ -286,7 +288,18 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Listar");
+
+        cb_listarlugares.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_listarlugaresItemStateChanged(evt);
+            }
+        });
+        cb_listarlugares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_listarlugaresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ListarLayout = new javax.swing.GroupLayout(Listar.getContentPane());
         Listar.getContentPane().setLayout(ListarLayout);
@@ -301,7 +314,13 @@ public class CasasyCarreteras extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ListarLayout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(jLabel11)))
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(ListarLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_listarlugares, 0, 145, Short.MAX_VALUE)
+                            .addComponent(cb_listarcarreteras, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ListarLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
@@ -310,7 +329,7 @@ public class CasasyCarreteras extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListarLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addGap(135, 135, 135))))
+                        .addGap(136, 136, 136))))
         );
         ListarLayout.setVerticalGroup(
             ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,11 +338,16 @@ public class CasasyCarreteras extends javax.swing.JFrame {
                 .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ListarLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(jButton1))
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton1)
+                        .addGap(19, 19, 19))
                     .addGroup(ListarLayout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addGap(98, 98, 98)
+                        .addGap(17, 17, 17)
+                        .addComponent(cb_listarlugares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cb_listarcarreteras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
                         .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))))
@@ -542,6 +566,8 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         modelo.addElement(nombre_restaurante);
         DefaultComboBoxModel model = (DefaultComboBoxModel) cb_final.getModel();
         model.addElement(nombre_restaurante);
+        DefaultComboBoxModel litar = (DefaultComboBoxModel) cb_listarlugares.getModel();
+        litar.addElement(nombre_restaurante);
     }//GEN-LAST:event_jb_restauranteMouseClicked
 
     private void jb_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarMouseClicked
@@ -570,11 +596,8 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         String categoria = (String) cb_categoriacancha.getSelectedItem();
         String estado = (String) cb_estado.getSelectedItem();
         cancha.add(new Cancha(categoria, estado, nombre_cancha, seguridad_cancha, direccion_cancha, 0, 0));
-        
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_iniciocarretera.getModel();
-        modelo.addElement(nombre_cancha);
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cb_final.getModel();
-        model.addElement(nombre_cancha);
+
+
     }//GEN-LAST:event_jb_guardarcanchaMouseClicked
 
     private void jb_guardarcanchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarcanchaActionPerformed
@@ -595,6 +618,13 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         tf_nombre.setText("");
         spinner_seguridad.setValue(10);
         tf_direccion.setText("");
+
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_iniciocarretera.getModel();
+        modelo.addElement(nombre_cancha);
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cb_final.getModel();
+        model.addElement(nombre_cancha);
+        DefaultComboBoxModel litar = (DefaultComboBoxModel) cb_listarlugares.getModel();
+        litar.addElement(nombre_cancha);
     }//GEN-LAST:event_jb_canchaMouseClicked
 
     private void jb_casaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_casaMouseClicked
@@ -610,6 +640,9 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         modelo.addElement(nombre_casa);
         DefaultComboBoxModel model = (DefaultComboBoxModel) cb_final.getModel();
         model.addElement(nombre_casa);
+        DefaultComboBoxModel litar = (DefaultComboBoxModel) cb_listarlugares.getModel();
+        litar.addElement(nombre_casa);
+;
     }//GEN-LAST:event_jb_casaMouseClicked
 
     private void cb_iniciocarreteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_iniciocarreteraActionPerformed
@@ -636,7 +669,7 @@ public class CasasyCarreteras extends javax.swing.JFrame {
             } else if (cb_iniciocarretera.getSelectedItem() instanceof Cancha) {
                 cancha.get(pos).setEntradas(1);
                 cb_iniciocarretera.remove(pos);
-            } else{
+            } else {
                 casa.get(pos).setEntradas(1);
                 cb_iniciocarretera.remove(pos);
             }
@@ -646,19 +679,30 @@ public class CasasyCarreteras extends javax.swing.JFrame {
     private void cb_finalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_finalItemStateChanged
         // TODO add your handling code here:
         int entradas = 0;
-        if (evt.ITEM_STATE_CHANGED == 2) {
+        if (evt.getStateChange()== 2) {
             int pos = cb_final.getSelectedIndex();
             if (cb_iniciocarretera.getSelectedItem() instanceof Restaurante) {
-                restaurante.get(pos).setSalidas(restaurante.get(pos).getSalidas()+1);
-            }else if (cb_iniciocarretera.getSelectedItem() instanceof Cancha) {
-                cancha.get(pos).setSalidas(cancha.get(pos).getSalidas()+1);
+                restaurante.get(pos).setSalidas(restaurante.get(pos).getSalidas() + 1);
+            } else if (cb_iniciocarretera.getSelectedItem() instanceof Cancha) {
+                cancha.get(pos).setSalidas(cancha.get(pos).getSalidas() + 1);
 
-            } else{
-                casa.get(pos).setSalidas(casa.get(pos).getSalidas()+1);
+            } else {
+                casa.get(pos).setSalidas(casa.get(pos).getSalidas() + 1);
 
             }
         }
     }//GEN-LAST:event_cb_finalItemStateChanged
+
+    private void cb_listarlugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_listarlugaresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_listarlugaresActionPerformed
+
+    private void cb_listarlugaresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_listarlugaresItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange()==2) {
+            
+        }
+    }//GEN-LAST:event_cb_listarlugaresItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -705,6 +749,8 @@ public class CasasyCarreteras extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_estado;
     private javax.swing.JComboBox<String> cb_final;
     private javax.swing.JComboBox<String> cb_iniciocarretera;
+    private javax.swing.JComboBox<String> cb_listarcarreteras;
+    private javax.swing.JComboBox<String> cb_listarlugares;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

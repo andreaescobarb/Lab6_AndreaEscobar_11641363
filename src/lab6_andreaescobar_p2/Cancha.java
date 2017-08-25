@@ -11,9 +11,9 @@ package lab6_andreaescobar_p2;
  */
 public class Cancha extends Lugar{
     private String categoria;
-    private boolean estado;
+    private String estado;
 
-    public Cancha(String categoria, boolean estado, String nombre, int nivelseguridad, String direccion, int entradas, int salidas) {
+    public Cancha(String categoria, String estado, String nombre, int nivelseguridad, String direccion, int entradas, int salidas) {
         super(nombre, nivelseguridad, direccion, entradas, salidas);
         this.categoria = categoria;
         this.estado = estado;
@@ -31,11 +31,11 @@ public class Cancha extends Lugar{
         this.categoria = categoria;
     }
 
-    public boolean isEstado() {
+    public String isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

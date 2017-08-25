@@ -6,6 +6,7 @@
 package lab6_andreaescobar_p2;
 
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -44,10 +45,36 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         tf_distancia = new javax.swing.JTextField();
+        jb_guardarcarretera = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        spinner_numerocarretera = new javax.swing.JSpinner();
+        jLabel13 = new javax.swing.JLabel();
+        cb_iniciocarretera = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        cb_final = new javax.swing.JComboBox<>();
         Listar = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList_listarcarreteras = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtree_listar = new javax.swing.JTree();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         jd_restaurante = new javax.swing.JDialog();
+        jLabel8 = new javax.swing.JLabel();
+        cb_categoria = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        cb_calificacion = new javax.swing.JComboBox<>();
+        jb_guardar = new javax.swing.JButton();
         jd_cancha = new javax.swing.JDialog();
-        jd_casa = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        cb_categoriacancha = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        cb_estado = new javax.swing.JComboBox<>();
+        jb_guardarcancha = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_lugar = new javax.swing.JMenu();
@@ -60,6 +87,8 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
 
         jLabel3.setText("Nivel de Seguridad");
+
+        spinner_seguridad.setModel(new javax.swing.SpinnerNumberModel());
 
         jLabel4.setText("Direccion");
 
@@ -74,8 +103,18 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         });
 
         jb_cancha.setText("Cancha");
+        jb_cancha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_canchaMouseClicked(evt);
+            }
+        });
 
         jb_casa.setText("Casa");
+        jb_casa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_casaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout LugaresLayout = new javax.swing.GroupLayout(Lugares.getContentPane());
         Lugares.getContentPane().setLayout(LugaresLayout);
@@ -97,7 +136,9 @@ public class CasasyCarreteras extends javax.swing.JFrame {
                     .addComponent(spinner_seguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                     .addComponent(tf_nombre)
-                    .addComponent(jb_cancha))
+                    .addGroup(LugaresLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jb_cancha)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jb_casa)
                 .addGap(38, 38, 38))
@@ -132,18 +173,67 @@ public class CasasyCarreteras extends javax.swing.JFrame {
 
         jLabel7.setText("Distancia");
 
+        jb_guardarcarretera.setText("Guardar");
+        jb_guardarcarretera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_guardarcarreteraMouseClicked(evt);
+            }
+        });
+        jb_guardarcarretera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_guardarcarreteraActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Numero");
+
+        spinner_numerocarretera.setModel(new javax.swing.SpinnerNumberModel());
+
+        jLabel13.setText("Inicio");
+
+        cb_iniciocarretera.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_iniciocarreteraItemStateChanged(evt);
+            }
+        });
+        cb_iniciocarretera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_iniciocarreteraActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Final");
+
+        cb_final.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_finalItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout CarreterasLayout = new javax.swing.GroupLayout(Carreteras.getContentPane());
         Carreteras.getContentPane().setLayout(CarreterasLayout);
         CarreterasLayout.setHorizontalGroup(
             CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CarreterasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_guardarcarretera)
+                .addGap(49, 49, 49))
             .addGroup(CarreterasLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
                     .addGroup(CarreterasLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addGroup(CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14))
                         .addGap(92, 92, 92)
-                        .addComponent(tf_distancia, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6))
+                        .addGroup(CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spinner_numerocarretera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_distancia)
+                            .addComponent(cb_final, 0, 112, Short.MAX_VALUE)
+                            .addComponent(cb_iniciocarretera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         CarreterasLayout.setVerticalGroup(
@@ -155,51 +245,216 @@ public class CasasyCarreteras extends javax.swing.JFrame {
                 .addGroup(CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tf_distancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(spinner_numerocarretera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(cb_iniciocarretera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CarreterasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(cb_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jb_guardarcarretera)
+                .addGap(33, 33, 33))
         );
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setText("Listar");
+
+        jList_listarcarreteras.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList_listarcarreteras);
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Lugares");
+        jtree_listar.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jtree_listar);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Lugar", "Carretera"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
+
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout ListarLayout = new javax.swing.GroupLayout(Listar.getContentPane());
         Listar.getContentPane().setLayout(ListarLayout);
         ListarLayout.setHorizontalGroup(
             ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(ListarLayout.createSequentialGroup()
+                .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ListarLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ListarLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jLabel11)))
+                .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ListarLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ListarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(135, 135, 135))))
         );
         ListarLayout.setVerticalGroup(
             ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(ListarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ListarLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(jButton1))
+                    .addGroup(ListarLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(98, 98, 98)
+                        .addGroup(ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setText("Restaurante");
+
+        cb_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Italiano", "Mexicano", "Chino", "Comida Rapida" }));
+
+        jLabel9.setText("Categoria");
+
+        jLabel10.setText("Calificacion");
+
+        cb_calificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        jb_guardar.setText("Guardar");
+        jb_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_guardarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_restauranteLayout = new javax.swing.GroupLayout(jd_restaurante.getContentPane());
         jd_restaurante.getContentPane().setLayout(jd_restauranteLayout);
         jd_restauranteLayout.setHorizontalGroup(
             jd_restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_restauranteLayout.createSequentialGroup()
+                .addGroup(jd_restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_restauranteLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel8))
+                    .addGroup(jd_restauranteLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jd_restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addGroup(jd_restauranteLayout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addGroup(jd_restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_calificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel9))))
+                .addContainerGap(126, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_restauranteLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jb_guardar)
+                .addGap(43, 43, 43))
         );
         jd_restauranteLayout.setVerticalGroup(
             jd_restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_restauranteLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel8)
+                .addGap(49, 49, 49)
+                .addGroup(jd_restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addGroup(jd_restauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(cb_calificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jb_guardar)
+                .addGap(34, 34, 34))
         );
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel15.setText("Cancha");
+
+        cb_categoriacancha.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soccer", "Basketball", "Tennis", "Volleyball" }));
+
+        jLabel16.setText("Categoria");
+
+        jLabel17.setText("Estado");
+
+        cb_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupado" }));
+
+        jb_guardarcancha.setText("Guardar");
+        jb_guardarcancha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_guardarcanchaMouseClicked(evt);
+            }
+        });
+        jb_guardarcancha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_guardarcanchaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_canchaLayout = new javax.swing.GroupLayout(jd_cancha.getContentPane());
         jd_cancha.getContentPane().setLayout(jd_canchaLayout);
         jd_canchaLayout.setHorizontalGroup(
             jd_canchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_canchaLayout.createSequentialGroup()
+                .addGroup(jd_canchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_canchaLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel15))
+                    .addGroup(jd_canchaLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jd_canchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17))
+                        .addGap(65, 65, 65)
+                        .addGroup(jd_canchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_categoriacancha, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_canchaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jb_guardarcancha)
+                .addGap(55, 55, 55))
         );
         jd_canchaLayout.setVerticalGroup(
             jd_canchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jd_casaLayout = new javax.swing.GroupLayout(jd_casa.getContentPane());
-        jd_casa.getContentPane().setLayout(jd_casaLayout);
-        jd_casaLayout.setHorizontalGroup(
-            jd_casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jd_casaLayout.setVerticalGroup(
-            jd_casaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_canchaLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jd_canchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel16)
+                    .addGroup(jd_canchaLayout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(46, 46, 46)
+                        .addComponent(cb_categoriacancha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addGroup(jd_canchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(cb_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(jb_guardarcancha)
+                .addGap(44, 44, 44))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -222,6 +477,11 @@ public class CasasyCarreteras extends javax.swing.JFrame {
         jmenu_carretera.setText("Carretera");
 
         jmenu_agregarcarretera.setText("Agregar Carretera");
+        jmenu_agregarcarretera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenu_agregarcarreteraActionPerformed(evt);
+            }
+        });
         jmenu_carretera.add(jmenu_agregarcarretera);
 
         jMenuBar1.add(jmenu_carretera);
@@ -265,14 +525,127 @@ public class CasasyCarreteras extends javax.swing.JFrame {
 
     private void jb_restauranteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_restauranteMouseClicked
         // TODO add your handling code here:
-        nombre_restaurante = tf_nombre.getText();
-        seguridad_restaurante = spinner_seguridad.getValue();
-        direccion_restaurante = tf_direccion;
+        nombre_restaurante = (String) tf_nombre.getText();
+        seguridad_restaurante = (int) spinner_seguridad.getValue();
+        direccion_restaurante = tf_direccion.getText();
+
         jd_restaurante.pack();
         jd_restaurante.setModal(true);
         jd_restaurante.setVisible(true);
         jd_restaurante.setLocationRelativeTo(this);
+
+        tf_nombre.setText("");
+        spinner_seguridad.setValue(10);
+        tf_direccion.setText("");
+
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_iniciocarretera.getModel();
+        modelo.addElement(nombre_restaurante);
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cb_final.getModel();
+        model.addElement(nombre_restaurante);
     }//GEN-LAST:event_jb_restauranteMouseClicked
+
+    private void jb_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarMouseClicked
+        // TODO add your handling code here:
+        int calificacion = Integer.parseInt((String) cb_calificacion.getSelectedItem());
+        String categoria = (String) cb_categoria.getSelectedItem();
+        restaurante.add(new Restaurante(categoria, calificacion, nombre_casa, seguridad_restaurante, direccion_restaurante, 0, 1));
+
+    }//GEN-LAST:event_jb_guardarMouseClicked
+
+    private void jb_guardarcarreteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarcarreteraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_guardarcarreteraActionPerformed
+
+    private void jb_guardarcarreteraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarcarreteraMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jb_guardarcarreteraMouseClicked
+
+    private void jb_guardarcanchaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_guardarcanchaMouseClicked
+        // TODO add your handling code here:
+        String categoria = (String) cb_categoriacancha.getSelectedItem();
+        String estado = (String) cb_estado.getSelectedItem();
+        cancha.add(new Cancha(categoria, estado, nombre_cancha, seguridad_cancha, direccion_cancha, 0, 0));
+    }//GEN-LAST:event_jb_guardarcanchaMouseClicked
+
+    private void jb_guardarcanchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_guardarcanchaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_guardarcanchaActionPerformed
+
+    private void jb_canchaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_canchaMouseClicked
+        // TODO add your handling code here:
+        nombre_cancha = tf_nombre.getText();
+        seguridad_cancha = (int) (spinner_seguridad.getValue());
+        direccion_cancha = tf_direccion.getText();
+
+        jd_cancha.pack();
+        jd_cancha.setModal(true);
+        jd_cancha.setVisible(true);
+        jd_cancha.setLocationRelativeTo(this);
+
+        tf_nombre.setText("");
+        spinner_seguridad.setValue(10);
+        tf_direccion.setText("");
+    }//GEN-LAST:event_jb_canchaMouseClicked
+
+    private void jb_casaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_casaMouseClicked
+        // TODO add your handling code here:
+        nombre_casa = tf_nombre.getText();
+        seguridad_casa = (int) spinner_seguridad.getValue();
+        direccion_casa = tf_direccion.getText();
+        tf_nombre.setText("");
+        spinner_seguridad.setValue(10);
+        tf_direccion.setText("");
+        casa.add(new Casa(nombre_casa, seguridad_casa, direccion_casa, 0, 0));
+    }//GEN-LAST:event_jb_casaMouseClicked
+
+    private void cb_iniciocarreteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_iniciocarreteraActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cb_iniciocarreteraActionPerformed
+
+    private void jmenu_agregarcarreteraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenu_agregarcarreteraActionPerformed
+        // TODO add your handling code here:
+        Carreteras.pack();
+        Carreteras.setModal(true);
+        Carreteras.setVisible(true);
+        Carreteras.setLocationRelativeTo(this);
+    }//GEN-LAST:event_jmenu_agregarcarreteraActionPerformed
+
+    private void cb_iniciocarreteraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_iniciocarreteraItemStateChanged
+        // TODO add your handling code here:
+
+        if (evt.ITEM_STATE_CHANGED == 2) {
+            int pos = cb_iniciocarretera.getSelectedIndex();
+            if (cb_iniciocarretera.getSelectedItem() instanceof Restaurante) {
+                restaurante.get(pos).setSalidas(1);
+                cb_iniciocarretera.remove(pos);
+            } else if (cb_iniciocarretera.getSelectedItem() instanceof Cancha) {
+                cancha.get(pos).setEntradas(1);
+                cb_iniciocarretera.remove(pos);
+            } else{
+                casa.get(pos).setEntradas(1);
+                cb_iniciocarretera.remove(pos);
+            }
+        }
+    }//GEN-LAST:event_cb_iniciocarreteraItemStateChanged
+
+    private void cb_finalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_finalItemStateChanged
+        // TODO add your handling code here:
+        int entradas = 0;
+        if (evt.ITEM_STATE_CHANGED == 2) {
+            int pos = cb_final.getSelectedIndex();
+            if (cb_iniciocarretera.getSelectedItem() instanceof Restaurante) {
+                restaurante.get(pos).setSalidas(restaurante.get(pos).getSalidas()+1);
+            }else if (cb_iniciocarretera.getSelectedItem() instanceof Cancha) {
+                cancha.get(pos).setSalidas(cancha.get(pos).getSalidas()+1);
+
+            } else{
+                casa.get(pos).setSalidas(casa.get(pos).getSalidas()+1);
+
+            }
+        }
+    }//GEN-LAST:event_cb_finalItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -313,26 +686,52 @@ public class CasasyCarreteras extends javax.swing.JFrame {
     private javax.swing.JDialog Carreteras;
     private javax.swing.JDialog Listar;
     private javax.swing.JDialog Lugares;
+    private javax.swing.JComboBox<String> cb_calificacion;
+    private javax.swing.JComboBox<String> cb_categoria;
+    private javax.swing.JComboBox<String> cb_categoriacancha;
+    private javax.swing.JComboBox<String> cb_estado;
+    private javax.swing.JComboBox<String> cb_final;
+    private javax.swing.JComboBox<String> cb_iniciocarretera;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList_listarcarreteras;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton jb_cancha;
     private javax.swing.JButton jb_casa;
+    private javax.swing.JButton jb_guardar;
+    private javax.swing.JButton jb_guardarcancha;
+    private javax.swing.JButton jb_guardarcarretera;
     private javax.swing.JButton jb_restaurante;
     private javax.swing.JDialog jd_cancha;
-    private javax.swing.JDialog jd_casa;
     private javax.swing.JDialog jd_restaurante;
     private javax.swing.JMenu jm_listar;
     private javax.swing.JMenuItem jmenu_agregarcarretera;
     private javax.swing.JMenuItem jmenu_agregarlugar;
     private javax.swing.JMenu jmenu_carretera;
     private javax.swing.JMenuItem jmenu_listar;
+    private javax.swing.JTree jtree_listar;
     private javax.swing.JMenu menu_lugar;
+    private javax.swing.JSpinner spinner_numerocarretera;
     private javax.swing.JSpinner spinner_seguridad;
     private javax.swing.JTextField tf_direccion;
     private javax.swing.JTextField tf_distancia;
@@ -342,14 +741,14 @@ public class CasasyCarreteras extends javax.swing.JFrame {
     ArrayList<Cancha> cancha = new ArrayList();
     ArrayList<Restaurante> restaurante = new ArrayList();
     ArrayList<Casa> casa = new ArrayList();
-    Object nombre_restaurante;
-    Object nombre_cancha;
-    Object nombre_casa;
-    Object seguridad_restaurante;
-    Object seguridad_cancha;
-    Object seguridad_casa;
-    Object direccion_restaurante;
-    Object direccion_cancha;
-    Object direccion_casa;
-    
+    String nombre_restaurante;
+    String nombre_cancha;
+    String nombre_casa;
+    int seguridad_restaurante;
+    int seguridad_cancha;
+    int seguridad_casa;
+    String direccion_restaurante;
+    String direccion_cancha;
+    String direccion_casa;
+
 }

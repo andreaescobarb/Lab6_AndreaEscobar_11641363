@@ -10,5 +10,14 @@ package lab6_andreaescobar_p2;
  * @author andre
  */
 public class Casa extends Lugar{
+
+    public Casa(String nombre, int nivelseguridad, String direccion, int entradas, int salidas) {
+        super(nombre, nivelseguridad, direccion, entradas, salidas);
+    }
+
+    @Override
+    public String toString() {
+        return "Casa{" + '}';
+    }
     
 }
